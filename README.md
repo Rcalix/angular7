@@ -9,5 +9,6 @@ $ cd angular7
 $ npm install
 $ ng serve
 ```
-
 Should be have the lastest version from angular cli
+
+be careful in signup window please only add Admin or user role any other role you cannot se the components
