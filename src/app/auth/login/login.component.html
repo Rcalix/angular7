@@ -1,0 +1,14 @@
+
+<div class="login-page">
+    <div  class="form">
+      <h2>Login</h2>
+      <form (submit)="onLogin(loginForm)" #loginForm="ngForm" *ngIf="!isLoading"  class="login-form">
+        <input matInput name="email" ngModel type="email" placeholder="E-Mail" #emailInput="ngModel" required email>
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        <input type="password" name="password" ngModel matInput placeholder="Password" #passwordInput="ngModel" required>
+        <button color="accent" type="submit" *ngIf="!isLoading">Login</button>
+        <p class="message">Not registered? <a routerLink="/signup" >Create an account</a></p>
+      </form>
+    </div>
+  </div>
+

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { ProductModel } from '../ProductModel';
 import { ProductService } from '../product.service';
+import { AuthService } from "../auth/auth.service";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: 'app-list-products',
@@ -9,13 +11,29 @@ import { ProductService } from '../product.service';
   styleUrls: ['./list-products.component.css']
 })
 export class ListProductsComponent implements OnInit {
-
+  
+  userIsAuthenticated = false;
+  role = '';
+  private authListenerSubs: Subscription;
   products: ProductModel[];
 
-  constructor(private productService: ProductService, private router: Router) { }
+  constructor(private productService: ProductService, private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
+    this.userIsAuthenticated = this.authService.getIsAuth();
+    this.authListenerSubs = this.authService
+      .getAuthStatusListener()
+      .subscribe(isAuthenticated => {
+        this.userIsAuthenticated = isAuthenticated;
+      });
+    this.role = this.authService.getRole();
+    console.log(this.role);
     this.getAllProducts();
+  }
+
+  
+  ngOnDestroy() {
+    this.authListenerSubs.unsubscribe();
   }
 
   getAllProducts(): void {

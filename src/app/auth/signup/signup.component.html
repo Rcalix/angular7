@@ -1,0 +1,13 @@
+<div class="login-page">
+    <div class="form">
+      <h2>Signup</h2>
+      <form (submit)="onSignup(signupForm)" #signupForm="ngForm" *ngIf="!isLoading"  class="login-form">
+        <input matInput name="email" ngModel type="email" placeholder="E-Mail" #emailInput="ngModel" required email>
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        <input type="text" name="role" ngModel matInput placeholder="Role" #passwordInput="ngModel" required>
+        <small id="emailHelp" class="form-text text-muted">Specify your Role.</small>
+        <input type="password" name="password" ngModel matInput placeholder="Password" #passwordInput="ngModel" required>
+        <button color="accent" type="submit" *ngIf="!isLoading">Signup</button>
+      </form>
+    </div>
+  </div>
