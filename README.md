@@ -5,7 +5,7 @@ This Project only needs follow this commands
 
 ```sh
 $ git clone https://github.com/Rcalix/angular7.git
-$ cd angular-7-crud 
+$ cd angular7
 $ npm install
 $ ng serve
 ```
